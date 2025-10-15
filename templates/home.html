@@ -2,10 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Home Page of my web App</h1>
+    <div class="container">
+        <h1>House Price Predictor 🏠</h1>
+        <form id="prediction-form">
+            <label for="sqft">Enter square footage:</label>
+            <input type="number" id="sqft" name="sqft" required>
+            <button type="submit">Predict Price</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("prediction-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const sqft = document.getElementById("sqft").value;
+
+            fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ sqft: sqft })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = 
+                    `<p>Predicted Price: <strong>$${data.predicted_price}</strong></p>`;
+            })
+            .catch(error => {
+                document.getElementById("result").innerHTML = 
+                    `<p style="color:red;">Error: ${error}</p>`;
+            });
+        });
+    </script>
 </body>
 </html>

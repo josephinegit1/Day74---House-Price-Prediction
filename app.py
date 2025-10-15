@@ -14,14 +14,15 @@ def about():
 
 
 model = load('house_price_model.joblib')
+# joblib.dump(model, 'house_price_model.joblib')
 
 @app.route('/predict', methods=['POST']) 
 def predict(): 
     data = request.get_json() # Receive JSON input 
-    sqft = np.array([[data['sqft']]]) # Extract input value 
+    sqft = np.array([[float(data['sqft'])]]) # Extract input value 
     prediction = model.predict(sqft)[0] # Make prediction 
     return jsonify({'predicted_price': round(prediction, 2)}) # Send response
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=5000)
