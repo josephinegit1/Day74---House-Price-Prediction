@@ -1,0 +1,11 @@
+customer_id,tenure,monthly_charges,total_charges,contract_type,internet_service,payment_method,churn
+C001,12,70.5,846.0,Monthly,DSL,Credit Card,0
+C002,1,85.0,85.0,Monthly,Fiber,Bank Transfer,1
+C003,24,60.0,1440.0,Yearly,DSL,Electronic Check,0
+C004,5,90.75,453.75,Monthly,Fiber,Credit Card,1
+C005,36,55.25,1989.0,Yearly,DSL,Mailed Check,0
+C006,8,0.0,0.0,Monthly,No,Bank Transfer,0
+C007,15,99.9,1498.5,Monthly,Fiber,Electronic Check,1
+C008,48,65.0,3120.0,Yearly,DSL,Credit Card,0
+C009,2,80.5,161.0,Monthly,Fiber,Bank Transfer,1
+C010,18,70.0,1260.0,Monthly,DSL,Mailed Check,0
